@@ -1,8 +1,8 @@
 from flask import render_template, Flask
-from app import app
-from .forms import StockForm
+from stock_form import StockForm
 
 app = Flask(__name__)
+app.config.from_object('config')
 
 
 @app.route('/')
