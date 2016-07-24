@@ -10,6 +10,10 @@ def hello_world():
     form = StockForm()
     return render_template('index.html', form = form)
 
+@app.route('/', methods=["POST"])
+def index_post():
+    form = StockForm()
+    return render_template('index.html', form=form)
 
 if __name__ == '__main__':
     app.run()
