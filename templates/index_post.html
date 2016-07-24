@@ -3,7 +3,7 @@
     <title>GARCH Demo</title>
   </head>
   <body>
-    <h1>{{ chosen.stock }}</h1>
+    <p> You chose {{ chosen }}. The given model for this is: {{ model.params }}</p>
     <h1>Stock Symbol</h1>
       <form action="" method="post" name="stock">
           {{ form.hidden_tag() }}
