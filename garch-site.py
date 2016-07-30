@@ -16,7 +16,8 @@ def index_post():
     stock = request.form['stock']
     form = StockForm()
     results = return_garch(stock)
-    return render_template('index_post.html', form=form, chosen=stock, model = results)
+    rs = results.params
+    return render_template('index_post.html', form=form, chosen=stock, model = rs)
 
 if __name__ == '__main__':
     app.run()

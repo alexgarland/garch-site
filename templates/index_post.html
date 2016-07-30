@@ -1,9 +1,28 @@
 <html>
   <head>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='baseguide.css') }}">
     <title>GARCH Demo</title>
   </head>
   <body>
-    <p> You chose {{ chosen }}. The given model for this is: {{ model.params }}</p>
+    <p> You chose {{ chosen }}. The given model for this is:</p>
+    <table>
+        <tr>
+            <th>Constant (Mean Model)</th>
+            <th>AR Lag 1 Coefficient</th>
+            <th>Constant (GARCH Model)</th>
+            <th>Alpha, Lag 1</th>
+            <th>Beta, Lag 1</th>
+            <th>Degrees of Freedom</th>
+        </tr>
+        <tr>
+            <td>{{ model[0] }}</td>
+            <td>{{ model[1] }}</td>
+            <td>{{ model[2] }}</td>
+            <td>{{ model[3] }}</td>
+            <td>{{ model[4] }}</td>
+            <td>{{ model[5] }}</td>
+        </tr>
+    </table>
     <h1>Stock Symbol</h1>
       <form action="" method="post" name="stock">
           {{ form.hidden_tag() }}

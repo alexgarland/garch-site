@@ -7,6 +7,6 @@ def return_garch(stock):
     en = dt.datetime(2015,1,1)
     data = web.get_data_yahoo(stock, start=st, end=en)
     returns = 100 * data['Adj Close'].pct_change().dropna()
-    am = garch.arch_model(returns)
+    am = garch.arch_model(returns, mean="ARX", lags = 1, dist="StudentsT")
     res = am.fit()
     return(res)
