@@ -1,6 +1,7 @@
 from flask import render_template, Flask, request
 from stock_form import StockForm
 from garch_calculation import return_garch
+from decimal import *
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -17,6 +18,7 @@ def index_post():
     form = StockForm()
     results = return_garch(stock)
     rs = results.params
+    rs = [float(Decimal("%.2f" % e)) for e in rs]
     return render_template('index_post.html', form=form, chosen=stock, model = rs)
 
 if __name__ == '__main__':

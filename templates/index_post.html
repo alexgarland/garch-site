@@ -4,8 +4,9 @@
     <title>GARCH Demo</title>
   </head>
   <body>
+  <div class="text-center">
     <p> You chose {{ chosen }}. The given model for this is:</p>
-    <table>
+    <table class = "table">
         <tr>
             <th>Constant (Mean Model)</th>
             <th>AR Lag 1 Coefficient</th>
@@ -14,7 +15,7 @@
             <th>Beta, Lag 1</th>
             <th>Degrees of Freedom</th>
         </tr>
-        <tr>
+        <tr class = "text-center">
             <td>{{ model[0] }}</td>
             <td>{{ model[1] }}</td>
             <td>{{ model[2] }}</td>
@@ -23,14 +24,15 @@
             <td>{{ model[5] }}</td>
         </tr>
     </table>
-    <h1>Stock Symbol</h1>
+    <h3>Stock Symbol</h3>
       <form action="" method="post" name="stock">
           {{ form.hidden_tag() }}
-          <p>
-              Enter the stock you want to research:<br>
-              {{ form.stock(size=10) }}<br>
-          </p>
-          <p><input type="submit" value="Research"></p>
+          <p>Enter the stock you want to research:</p>
+          <div class = "col col-sm-2 col-sm-offset-5">{{ form.stock(size=10) }}</div>
+          <div style="clear:both"></div>
+          <br>
+          <p><input class = "btn col-sm-2" type="submit" value="Research"></p>
       </form>
+    </div>
   </body>
 </html>

@@ -4,14 +4,14 @@
     <title>GARCH Demo</title>
   </head>
   <body>
-    <h1>Stock Symbol</h1>
+    <h3 class="text-center">Stock Symbol</h3>
       <form action="" method="post" name="stock">
           {{ form.hidden_tag() }}
-          <p>
-              Enter the stock you want to research:<br>
-              {{ form.stock(size=10) }}<br>
-          </p>
-          <p><input type="submit" value="Research"></p>
+          <p class="text-center">Enter the stock you want to research:</p>
+          <div class = "col col-sm-2 col-sm-offset-5">{{ form.stock(size=10) }}</div>
+          <div style="clear:both"></div>
+          <br>
+          <p><input class = "btn col-sm-offset-5 col-sm-2" type="submit" value="Research"></p>
       </form>
   </body>
 </html>
