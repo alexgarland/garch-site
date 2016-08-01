@@ -10,7 +10,8 @@ app.config.from_object('config')
 @app.route('/')
 def hello_world():
     form = StockForm()
-    return render_template('index.html', form = form)
+    return render_template('index.html', form=form)
+
 
 @app.route('/', methods=["POST"])
 def index_post():
@@ -19,7 +20,10 @@ def index_post():
     results = return_garch(stock)
     rs = results.params
     rs = [float(Decimal("%.2f" % e)) for e in rs]
-    return render_template('index_post.html', form=form, chosen=stock, model = rs)
+    cv = results.conditional_volatility
+    sr = results.resid
+    dates = cv.axes[0]
+    return render_template('index_post.html', form=form, chosen=stock, model=rs, cv=cv, sr=sr, dates = dates)
 
 if __name__ == '__main__':
     app.run()

@@ -1,6 +1,7 @@
 <html>
   <head>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='baseguide.css') }}">
+    <script src="{{ url_for('static',filename='Chart.js') }}"></script>
     <title>GARCH Demo</title>
   </head>
   <body>
@@ -24,6 +25,11 @@
             <td>{{ model[5] }}</td>
         </tr>
     </table>
+      <div class="text-center">
+          <canvas id="my_cv" width="800" height="400" style="align: center"></canvas>
+        </div>
+      <canvas id="sr_chart" width="600" height="400"></canvas>
+      <canvas id="visitors-graph" class="right" height="340" width="580"></canvas>
     <h3>Stock Symbol</h3>
       <form action="" method="post" name="stock">
           {{ form.hidden_tag() }}
@@ -34,5 +40,31 @@
           <p><input class = "btn col-sm-2" type="submit" value="Research"></p>
       </form>
     </div>
+  <script>
+      var ctx1 = document.getElementById('my_cv').getContext('2d');
+      var ctx2 = document.getElementById("sr_chart");
+      var cv_data = {
+          labels: [{% for i in range(1, (dates|length - 1)) %}
+                        "{{dates[i]}}",
+                    {% endfor %}],
+           datasets: [
+              {
+                    label: "Conditional Volatility",
+                    fillColor: 'rgba(255,255,255,0)',
+                    strokeColor: 'rgba(220,180,0,1)',
+                    pointColor: 'rgba(220,180,0,1)',
+                    data : [{% for i in range(1, (cv|length - 1))%}
+                              {{cv[i]}},
+                            {% endfor %}]
+              }]
+        }
+
+
+
+      var cv_chart = new Chart(ctx1, {
+          type: 'line',
+          data: cv_data
+      });
+  </script>
   </body>
 </html>
