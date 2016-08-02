@@ -1,1 +1,1 @@
-web: gunicorn garch-site:application
+web: gunicorn garch-site:app
