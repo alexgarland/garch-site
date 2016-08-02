@@ -1,0 +1,6 @@
+arch
+flask
+decimal
+wtforms
+pandas
+datetime
