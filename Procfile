@@ -1,1 +1,1 @@
-web: python garch-site.py
+web: gunicorn app:app
