@@ -1,1 +1,1 @@
-web: gunicorn garch-site.py
+web: gunicorn garch-site:application
